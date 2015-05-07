@@ -9,7 +9,7 @@ public class DebugTest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		GoEating();
+		NewTarget();
 	}
 
 	void Update()
@@ -20,27 +20,11 @@ public class DebugTest : MonoBehaviour
 			behaviour.Resume();
 	}
 
-	private void GoEating()
+	private void NewTarget()
 	{
-		// Release
-		behaviour.OnBehaviourStopped -= GoEating;
-
-		behaviour = new EatBehaviour(5) as BaseBehaviour;
+		behaviour = new MovementBehaviour(this.gameObject, new Vector3(Random.Range (1f,20f) ,0f ,Random.Range (1f,20f)));
+		behaviour.OnBehaviourStopped += NewTarget;
 		behaviour.Start();
-
-		// Subscribe
-		behaviour.OnBehaviourStopped += GotoSleep;
 	}
 
-	private void GotoSleep()
-	{
-		// Release
-		behaviour.OnBehaviourStopped -= GotoSleep;
-
-		behaviour = new SleepBehaviour(10) as BaseBehaviour;
-		behaviour.Start();
-
-		// Subscribe
-		behaviour.OnBehaviourStopped += GoEating;
-	}
 }
