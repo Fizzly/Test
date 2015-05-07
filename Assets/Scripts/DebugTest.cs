@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class DebugTest : MonoBehaviour
 {
 	// Data
-	private BasicBehaviour behaviour = new BasicBehaviour();
+	private BaseBehaviour behaviour = new BaseBehaviour();
 
 	// Use this for initialization
 	void Start ()
@@ -25,7 +25,7 @@ public class DebugTest : MonoBehaviour
 		// Release
 		behaviour.OnBehaviourStopped -= GoEating;
 
-		behaviour = new EatBehaviour(5) as BasicBehaviour;
+		behaviour = new EatBehaviour(5) as BaseBehaviour;
 		behaviour.Start();
 
 		// Subscribe
@@ -37,7 +37,7 @@ public class DebugTest : MonoBehaviour
 		// Release
 		behaviour.OnBehaviourStopped -= GotoSleep;
 
-		behaviour = new SleepBehaviour(10) as BasicBehaviour;
+		behaviour = new SleepBehaviour(10) as BaseBehaviour;
 		behaviour.Start();
 
 		// Subscribe

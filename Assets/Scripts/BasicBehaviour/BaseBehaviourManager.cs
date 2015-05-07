@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicBehaviourManager : MonoBehaviour
+public class BaseBehaviourManager : MonoBehaviour
 {
 	// We are a singleton
-	public static BasicBehaviourManager Instance;
+	public static BaseBehaviourManager Instance;
 
 	void Awake()
 	{

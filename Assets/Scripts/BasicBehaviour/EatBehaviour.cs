@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class EatBehaviour : BasicBehaviour
+public class EatBehaviour : BaseBehaviour
 {
 	// Data
 	private int hunger;
@@ -17,7 +17,7 @@ public class EatBehaviour : BasicBehaviour
 	public override void Start()
 	{
 		base.Start();
-		BasicBehaviourManager.Instance.StartCoroutine(Eat ());
+		BaseBehaviourManager.Instance.StartCoroutine(Eat ());
 	}
 
 	/// <summary>
@@ -49,6 +49,6 @@ public class EatBehaviour : BasicBehaviour
 	public override void Stop ()
 	{
 		base.Stop();
-		BasicBehaviourManager.Instance.StopCoroutine(Eat ());
+		BaseBehaviourManager.Instance.StopCoroutine(Eat ());
 	}
 }

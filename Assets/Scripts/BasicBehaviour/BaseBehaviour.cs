@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicBehaviour
+public class BaseBehaviour
 {
 	// Keeps track of the state
 	internal BehaviourState state;

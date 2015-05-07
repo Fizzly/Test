@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class SleepBehaviour : BasicBehaviour
+public class SleepBehaviour : BaseBehaviour
 {
 	// Data
 	private int sleep;
@@ -17,7 +17,7 @@ public class SleepBehaviour : BasicBehaviour
 	public override void Start()
 	{
 		base.Start();
-		BasicBehaviourManager.Instance.StartCoroutine(Sleep ());
+		BaseBehaviourManager.Instance.StartCoroutine(Sleep ());
 	}
 	
 	/// <summary>
@@ -49,6 +49,6 @@ public class SleepBehaviour : BasicBehaviour
 	public override void Stop ()
 	{
 		base.Stop();
-		BasicBehaviourManager.Instance.StopCoroutine(Sleep ());
+		BaseBehaviourManager.Instance.StopCoroutine(Sleep ());
 	}
 }
