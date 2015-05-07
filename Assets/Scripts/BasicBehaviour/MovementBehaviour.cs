@@ -69,13 +69,18 @@ public class MovementBehaviour : BaseBehaviour
 	{
 		while(targetIsReached == false)
 		{
-			currentTime += Time.deltaTime;
-			gameObject.transform.position = Vector3.Lerp(origin, target, currentTime / duration);
+			if(state != BehaviourState.paused)
+			{
+				currentTime += Time.deltaTime;
+				gameObject.transform.position = Vector3.Lerp(origin, target, currentTime / duration);
 
-			if(currentTime >= duration)
-				targetIsReached = true;
+				if(currentTime >= duration)
+					targetIsReached = true;
 
-			yield return new WaitForEndOfFrame();
+				yield return new WaitForEndOfFrame();
+			}
+			else
+				yield return new WaitForEndOfFrame();
 		}
 
 		Stop ();

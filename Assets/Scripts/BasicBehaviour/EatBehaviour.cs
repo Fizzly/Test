@@ -31,15 +31,11 @@ public class EatBehaviour : BaseBehaviour
 			if(state != BehaviourState.paused)
 			{
 				// Do our thing
-				Debug.Log ("NOM NOM NOM NOM NOM NOM NOM My hunger is: " + hunger.ToString());
 				hunger -= 1;
 				yield return new WaitForSeconds(1.0f); // 1 second delay
 			}
 			else
-			{
-				Debug.Log ("Paused");
 				yield return new WaitForSeconds(1.0f); // 1 second delay
-			}
 		}
 
 		Stop ();

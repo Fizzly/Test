@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DebugTest : MonoBehaviour
+public class Cow : MonoBehaviour
 {
 	// Data
 	private BaseBehaviour behaviour = new BaseBehaviour();
@@ -9,22 +9,28 @@ public class DebugTest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		NewTarget();
+		MoveToFreshGrass();
 	}
 
 	void Update()
 	{
 		if(Input.GetKey(KeyCode.P))
-			behaviour.Pause();
+			Time.timeScale = 0f;
 		else
-			behaviour.Resume();
+			Time.timeScale = 1f;
 	}
 
-	private void NewTarget()
+	private void MoveToFreshGrass()
 	{
 		behaviour = new MovementBehaviour(this.gameObject, new Vector3(Random.Range (1f,20f) ,0f ,Random.Range (1f,20f)));
-		behaviour.OnBehaviourStopped += NewTarget;
+		behaviour.OnBehaviourStopped += StartEating;
 		behaviour.Start();
 	}
 
+	private void StartEating()
+	{
+		behaviour = new EatBehaviour(2 + Random.Range (0,6));
+		behaviour.OnBehaviourStopped += MoveToFreshGrass;
+		behaviour.Start();
+	}
 }
