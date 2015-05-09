@@ -12,14 +12,6 @@ public class Cow : MonoBehaviour
 		MoveToFreshGrass();
 	}
 
-	void Update()
-	{
-		if(Input.GetKey(KeyCode.P))
-			Time.timeScale = 0f;
-		else
-			Time.timeScale = 1f;
-	}
-
 	private void MoveToFreshGrass()
 	{
 		behaviour = new MovementBehaviour(this.gameObject, new Vector3(Random.Range (1f,20f) ,0f ,Random.Range (1f,20f)));
