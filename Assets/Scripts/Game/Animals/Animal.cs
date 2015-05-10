@@ -8,21 +8,30 @@ public enum Gender
 	Female,
 }
 
+public class AnimalData
+{
+	// Data
+	public string name;
+	public int age;
+	public Gender gender;
+	public float energy;
+
+	public AnimalData(string name, int age, Gender gender, float engergy)
+	{
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.energy = energy;
+	}
+}
+
 public class Animal : MonoBehaviour
 {
 	// This should be in a data class can be used as reference type
-	protected string name;
-	protected int age;
-	protected Gender gender;
-
-	protected float energy;
+	protected AnimalData animalData;
 
 	public Animal(int age, Gender gender)
 	{
-		this.age = age;
-		this.gender = gender;
-
-		name = "Animal";
-		energy = 1.0f;
+		animalData = new AnimalData ("Animal", age, gender, 1.0f);
 	}
 }

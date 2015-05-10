@@ -8,6 +8,6 @@ public class AnimalHerbivore : Animal
 
 	public AnimalHerbivore(int age, Gender gender) : base(age, gender)
 	{
-		name = "AnimalHerbivore"; // currently only difference with base constructor
+		animalData.name = "AnimalHerbivore"; // currently only difference with base constructor
 	}
 }
