@@ -15,13 +15,15 @@ public class AnimalData
 	public int age;
 	public Gender gender;
 	public float energy;
+	public int health;
 
-	public AnimalData(string name, int age, Gender gender, float engergy)
+	public AnimalData(string name, int age, Gender gender)
 	{
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
-		this.energy = energy;
+		energy = 1.0;
+		health = 100;
 	}
 }
 
@@ -30,8 +32,11 @@ public class Animal : MonoBehaviour
 	// This should be in a data class can be used as reference type
 	protected AnimalData animalData;
 
+	// The current behaviour of this animal
+	protected BaseBehaviour behaviour;
+
 	public Animal(int age, Gender gender)
 	{
-		animalData = new AnimalData ("Animal", age, gender, 1.0f);
+		animalData = new AnimalData ("Animal", age, gender);
 	}
 }
