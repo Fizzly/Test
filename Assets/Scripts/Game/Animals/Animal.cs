@@ -15,15 +15,15 @@ public class AnimalData
 	public int age;
 	public Gender gender;
 	public float energy;
-	public int health;
+	public float health;
 
 	public AnimalData(string name, int age, Gender gender)
 	{
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
-		energy = 1.0;
-		health = 100;
+		energy = 1.0f;
+		health = 100.0f;
 	}
 }
 

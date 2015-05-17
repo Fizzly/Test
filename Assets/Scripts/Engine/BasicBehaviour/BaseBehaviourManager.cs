@@ -14,7 +14,7 @@ public class BaseBehaviourManager : MonoBehaviour
 
 	/// <summary>
 	/// Used by behaviours to start a coroutine
-	/// Done here since only monobehaviour have coroutine functionality
+	/// Done here since only monobehaviour has coroutine functionality
 	/// </summary>
 	public void StartRoutine(IEnumerator routine)
 	{
@@ -23,7 +23,7 @@ public class BaseBehaviourManager : MonoBehaviour
 
 	/// <summary>
 	/// Used by behaviours to stop a coroutine
-	/// Done here since only monobehaviour have coroutine functionality
+	/// Done here since only monobehaviour has coroutine functionality
 	/// </summary>
 	public void StopRoutine(IEnumerator routine)
 	{
