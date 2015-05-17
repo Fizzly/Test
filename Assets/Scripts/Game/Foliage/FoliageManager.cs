@@ -18,7 +18,7 @@ public class FoliageManager : MonoBehaviour
 
 	public Foliage GetClosestFoliage(Vector3 anOrigin)
 	{
-		GetClosestFoliage(anOrigin, 0);
+		return GetClosestFoliage(anOrigin, 0);
 	}
 
 	public Foliage GetClosestFoliage(Vector3 anOrigin, int aMinimumFood)
