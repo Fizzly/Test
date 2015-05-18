@@ -29,11 +29,21 @@ public class AnimalData
 
 public class Animal : MonoBehaviour
 {
+	// Data
+	// Visual object, should be replaced if inherited from actor class
+	protected GameObject gameObject;
 	// This should be in a data class can be used as reference type
 	protected AnimalData animalData;
-
 	// The current behaviour of this animal
 	protected BaseBehaviour behaviour;
+
+	// Properties
+	public Vector3 Position{
+		get
+		{
+			return transform.position;
+		}
+	}
 
 	public Animal(int age, Gender gender)
 	{

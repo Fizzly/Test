@@ -33,7 +33,7 @@ public class FoliageManager : MonoBehaviour
 		// Search for the closest, should be optimized
 		foreach(Foliage foliage in foliageList)
 		{
-			currentDistance = Vector3.Distance(foliage.transform.position, anOrigin);
+			currentDistance = Vector3.Distance(foliage.Position, anOrigin);
 			if(currentDistance < closestDistance && foliage.Food >= aMinimumFood)
 			{
 				closestFoliage = foliage;
