@@ -10,11 +10,15 @@ public class AnimalGazelle : AnimalHerbivore
 
 	public void Start()
 	{
+		animalData = new AnimalData ("Animal", 10, Gender.Male);
+		minimumFoodRequired = 20;
+
 		FindFood();
 	}
 	
 	private void FindFood()
 	{
+		Debug.Log ("FindFood");
 		foliage = FoliageManager.Instance.GetClosestFoliage(transform.position, minimumFoodRequired);
 
 		if(foliage!=null)
@@ -29,7 +33,8 @@ public class AnimalGazelle : AnimalHerbivore
 
 	private void StartEating()
 	{
-		behaviour = new EatBehaviour(2 + Random.Range (0,6));
+		Debug.Log ("StartEating");
+		behaviour = new EatBehaviour(animalData, foliage);
 		behaviour.OnBehaviourStopped += FindFood;
 		behaviour.Start();
 	}	

@@ -11,11 +11,9 @@ public class Foliage : MonoBehaviour
 		}
 	}
 
-	// New Foliage
-	public Foliage ( Vector3 aPosition)
+	void Start()
 	{
 		food = 100;
-		transform.position = aPosition;
 		FoliageManager.Instance.FoliageList.Add(this);
 	}
 
@@ -25,6 +23,7 @@ public class Foliage : MonoBehaviour
 		if(food >= anAmount)
 		{
 			food -= anAmount;
+			transform.localScale = new Vector3(1, food * 0.01f,1);
 			return true;
 		}
 		else

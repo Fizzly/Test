@@ -4,14 +4,16 @@ using System.Collections;
 public class EatBehaviour : BaseBehaviour
 {
 	// Data
-	private int hunger;
+	private AnimalData animalData;
+	private Foliage foliage;
 
 	/// <summary>
 	/// Creates a new EatBehaviour
 	/// </summary>
-	public EatBehaviour(int hunger)
+	public EatBehaviour(AnimalData animalData, Foliage foliage)
 	{
-		this.hunger = hunger;
+		this.animalData = animalData;
+		this.foliage = foliage;
 	}
 
 	public override void Start()
@@ -26,16 +28,18 @@ public class EatBehaviour : BaseBehaviour
 	private IEnumerator Eat()
 	{
 		// Only run when we're active
-		while(hunger > 0)
+		while(foliage.Food > 0)
 		{
 			if(state != BehaviourState.paused)
 			{
 				// Do our thing
-				hunger -= 1;
-				yield return new WaitForSeconds(1.0f); // 1 second delay
+				if(foliage.Eat(5))
+					animalData.energy += 5;
+
+				yield return new WaitForSeconds(0.2f); // 1 second delay
 			}
 			else
-				yield return new WaitForSeconds(1.0f); // 1 second delay
+				yield return new WaitForSeconds(0.2f); // 1 second delay
 		}
 
 		Stop ();

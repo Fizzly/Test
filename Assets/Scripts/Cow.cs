@@ -21,8 +21,6 @@ public class Cow : MonoBehaviour
 
 	private void StartEating()
 	{
-		behaviour = new EatBehaviour(2 + Random.Range (0,6));
-		behaviour.OnBehaviourStopped += MoveToFreshGrass;
-		behaviour.Start();
+		// This script should be deleted, not up to date anymore
 	}
 }
