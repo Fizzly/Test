@@ -24,10 +24,4 @@ public class ProfileManager : MonoBehaviour
 		profiles.Add(new Profile(name, new DateTime(0)));
 		currentProfile = profiles[profiles.Count -1];
 	}
-
-	void OnGUI()
-	{
-		GUI.Box (new Rect(0,0,300,30),  currentProfile.CurrentDate.Date.Day + " " + currentProfile.CurrentDate.Date.Month + " " + currentProfile.CurrentDate.Date.Year);
-	}
-
 }
