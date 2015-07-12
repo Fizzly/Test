@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
+[Serializable]
 public class TimeManager : MonoBehaviour
 {
-	// Events
-	public delegate void MinutePassedHandler();
-	public event MinutePassedHandler OnMinutePassed;
-
 	// We are a singleton
 	public static TimeManager Instance;
 
@@ -37,7 +35,7 @@ public class TimeManager : MonoBehaviour
 
 	public void StopTime()
 	{
-		StopCoroutine(TimeRoutine());
+		StopAllCoroutines();
 	}
 
 	private IEnumerator TimeRoutine()
@@ -46,12 +44,9 @@ public class TimeManager : MonoBehaviour
 		while(passedSeconds < 60)
 		{
 			yield return new WaitForSeconds(0.1f);
-			ProfileManager.Instance.CurrentProfile.PassTime(new System.TimeSpan(1,0,0,0));
+			GameManager.Instance.CurrentGame.CurrentProfile.PassTime(new System.TimeSpan(1,0,0,0));
 			passedSeconds+=10;
 		}
-
-		if(OnMinutePassed!=null);
-			OnMinutePassed();
 
 		StartCoroutine(TimeRoutine());
 	}

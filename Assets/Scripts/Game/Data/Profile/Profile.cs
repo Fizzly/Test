@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class Profile
 {
 	private string name;
@@ -23,14 +23,24 @@ public class Profile
 
 	public DateTime PassTime(TimeSpan amount)
 	{
-		return currentDate = currentDate.AddTicks(amount.Ticks);
+		DateTime oldDate = currentDate;
+		currentDate = currentDate.AddTicks(amount.Ticks);
+
+		if(oldDate.Month != currentDate.Month)
+			bankAccount.MonthHasPassed();
+
+		return CurrentDate;
 	}
 }
 
+[System.Serializable]
 public class ProfileList
 {
 	private List<Profile> profiles;
 	public List<Profile> Profiles {get {return profiles;}}
+
+	private Profile currentProfile;
+	public Profile CurrentProfile {	get {return currentProfile;	}}
 
 	public ProfileList()
 	{
@@ -40,11 +50,14 @@ public class ProfileList
 	public Profile AddProfile(Profile newProfile)
 	{
 		profiles.Add(newProfile);
+		currentProfile = newProfile;
 		return newProfile;
 	}
 
 }
 
+
+[System.Serializable]
 public class BankAccount
 {
 	private double money;
@@ -61,10 +74,8 @@ public class BankAccount
 		loan = 5000.00;
 		monthlyExpenses = 0.00;
 		monthlyIncome = 0.00;
-
-		TimeManager.Instance.OnMinutePassed += MonthHasPassed;
 	}
-
+	
 	public void Income(double amount)
 	{
 		money+=amount;
@@ -77,7 +88,7 @@ public class BankAccount
 		monthlyIncome += amount;
 	}
 
-	private void MonthHasPassed()
+	public void MonthHasPassed()
 	{
 		money = Math.Round( money - (loan * 0.014653f), 2);
 	}
