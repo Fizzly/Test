@@ -3,14 +3,13 @@ using System;
 using System.Collections;
 
 [Serializable]
-public class TimeManager : MonoBehaviour
+public class GameTime
 {
-	// We are a singleton
-	public static TimeManager Instance;
+	private Profile profile;
 
-	void Awake()
+	public GameTime(Profile currentProfile)
 	{
-		Instance = this;
+		profile = currentProfile;
 	}
 
 	/// <summary>
@@ -18,7 +17,7 @@ public class TimeManager : MonoBehaviour
 	/// </summary>
 	public void StartTime()
 	{
-		StartCoroutine(TimeRoutine());
+		GameManager.Instance.StartCoroutine(TimeRoutine());
 	}
 
 	/// <summary>
@@ -35,7 +34,7 @@ public class TimeManager : MonoBehaviour
 
 	public void StopTime()
 	{
-		StopAllCoroutines();
+		GameManager.Instance.StopCoroutine(TimeRoutine());
 	}
 
 	private IEnumerator TimeRoutine()
@@ -44,10 +43,10 @@ public class TimeManager : MonoBehaviour
 		while(passedSeconds < 60)
 		{
 			yield return new WaitForSeconds(0.1f);
-			GameManager.Instance.CurrentGame.CurrentProfile.PassTime(new System.TimeSpan(1,0,0,0));
+			profile.PassTime(new System.TimeSpan(1,0,0,0));
 			passedSeconds+=10;
 		}
 
-		StartCoroutine(TimeRoutine());
+		GameManager.Instance.StartCoroutine(TimeRoutine());
 	}
 }

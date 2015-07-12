@@ -53,9 +53,7 @@ public class ProfileList
 		currentProfile = newProfile;
 		return newProfile;
 	}
-
 }
-
 
 [System.Serializable]
 public class BankAccount

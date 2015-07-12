@@ -29,6 +29,8 @@ namespace GameEngine.Extensions
 		{
 			string serializedDataString = PlayerPrefs.GetString(saveTag);
 
+			Debug.Log (serializedDataString);
+
 			if(serializedDataString == string.Empty)
 				return null;
 
